@@ -2,7 +2,6 @@
 // import {store} from '../../data/store';
     export default {
         props:{
-            key: 'String',
             title: 'String',
             originalTitle: 'String',
             lang: 'String',
@@ -14,8 +13,15 @@
 <template>
     <div class="col">
         <div class="gm_card">
-            <div class="card_gm_title">
-                
+            <div class="card_gm_title border border-2">
+                {{ title }}
+                <div>{{ originalTitle }}</div>
+            </div>
+            <div class="card_gm_lang">
+                {{ lang }}
+            </div>
+            <div class="card_gm_vote border border-1">
+                {{ vote }}
             </div>
         </div>
     </div>

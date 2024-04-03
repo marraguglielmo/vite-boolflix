@@ -15,7 +15,7 @@ import MovieCard from './partials/MovieCard.vue';
 </script>
 
 <template>
-    <div class="container border border-1">
+    <div class="container row row-cols-4 border border-1 m-auto border-danger border-2">
 
         <MovieCard 
             v-for="card in store.cardList"
