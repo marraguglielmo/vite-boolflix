@@ -5,6 +5,17 @@ import {store} from '../../data/store'
             return{
                 store
             }
+        },
+
+        methods:{
+            reset(){
+                store.nameToSearch = ''
+            },
+
+            search(){
+                this.$emit('search');
+                // this.reset();
+            }
         }
     }
 </script>
@@ -15,7 +26,9 @@ import {store} from '../../data/store'
             class="form-control w-75"
             v-model.trim="store.nameToSearch"
         >
-        <button class="btn btn-primary">Cerca</button>
+        <button class="btn btn-primary"
+                @click="search"
+        >Cerca</button>
     </div>
 </template>
 

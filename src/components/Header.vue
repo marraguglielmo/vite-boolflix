@@ -10,7 +10,6 @@ import Searchbar from './partials/Searchbar.vue';
 <template>
     <div class="container-md my-5">
         <h1 class="text-center mb-3">Boolflix</h1>
-        <Searchbar />
     </div>
 </template>
 
