@@ -15,7 +15,7 @@
       getApi(){
         axios.get(`${store.apiUrlMovies}?api_key=${store.api_key}`, {
           params:{
-            query: 'maze',
+            query: store.nameToSearch,
             language: 'it-IT'
           }
         })
