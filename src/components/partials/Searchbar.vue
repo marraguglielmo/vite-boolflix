@@ -14,7 +14,7 @@ import {store} from '../../data/store'
 
             search(){
                 this.$emit('search');
-                // this.reset();
+                this.reset();
             }
         }
     }
@@ -24,6 +24,7 @@ import {store} from '../../data/store'
     <div class="d-flex justify-content-center w-50 m-auto">
         <input
             class="form-control w-75"
+            placeholder="Cerca un film"
             v-model.trim="store.nameToSearch"
         >
         <button class="btn btn-primary"

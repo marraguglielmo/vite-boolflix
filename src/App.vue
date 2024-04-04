@@ -2,41 +2,37 @@
   import {store} from './data/store';
   import axios from 'axios';
   import Header from './components/Header.vue';
-  import Searchbar from './components/partials/Searchbar.vue';
-  import Main from './components/Main.vue';
-  import ContainerCards from './components/ContainerCards.vue';
   import Footer from './components/Footer.vue';
-import SearchbarVue from './components/partials/Searchbar.vue';
+  import Searchbar from './components/partials/Searchbar.vue';
+  import ContainerCards from './components/ContainerCards.vue';
   export default{
     components:{
       Header,
       Searchbar,
-      Main,
-      Footer,
-      ContainerCards
+      ContainerCards,
+      Footer
     },
 
     methods:{
-      getApi(){
-        axios.get(`${store.apiUrlMovies}?api_key=${store.api_key}`, {
+      getApi(type){
+        axios.get(`${store.apiUrl}${type}?api_key=${store.api_key}`, {
           params:{
             query: store.nameToSearch,
             language: 'it-IT',
           }
         })
-        .then(result =>{
-          console.log(result.data.results);
-          store.cardList = result.data.results
-          console.log(store.cardList);
-        })
-        .catch(error =>{
-          console.log(error);
-        })
+          .then(result =>{
+            store[type] = result.data.results
+          })
+          .catch(error =>{
+            console.log('errore');
+          })
       }
     },
 
     mounted(){
-      this.getApi()
+      this.getApi('movie')
+      this.getApi('tv')
     }
   }
 </script>
@@ -45,8 +41,8 @@ import SearchbarVue from './components/partials/Searchbar.vue';
 
   <Header />
   <Searchbar @search="getApi" class="mb-4"/>
-  <ContainerCards />
-  <Main />
+  <ContainerCards type="movie"/>
+  <ContainerCards type="tv"/>
   <Footer />
   
 </template>
