@@ -1,8 +1,33 @@
 <script>
-// import {store} from '../../data/store';
+import {store} from '../../data/store';
     export default {
         props:{
             cardObj: Object
+        },
+
+        data(){
+            return{
+                store,
+                isIt : false,
+                isEn : false,
+                lang : ''
+            }
+        },
+
+        methods:{
+            flagLang(){
+                if(this.cardObj.original_language === 'it'){
+                    this.isIt = true
+                }else if (this.cardObj.original_language === 'en'){
+                    this.isEn = true
+                }else{
+                    this.lang = this.cardObj.original_language
+                }
+            }
+        },
+
+        mounted(){
+            this.flagLang();
         }
     }
 </script>
@@ -15,7 +40,9 @@
                 <div class="text-danger fs-6">{{ cardObj.original_title || cardObj.original_name }}</div>
             </div>
             <div class="card_gm_lang">
-                {{ cardObj.original_language }}
+                <img v-if="this.isIt === true" src="../../../it.png" alt="">
+                <img v-else-if="this.isEn === true" src="../../../en.png" alt="">
+                <div v-else> {{ this.lang }}</div>
             </div>
             <div class="card_gm_vote border border-1">
                 vote: {{ cardObj.vote_count }}
@@ -39,6 +66,9 @@
         .card_gm_vote{
             padding: 1px;
         }
+        .card_gm_lang img{
+            width: 10%;
+        }    
     }
 }
 </style>

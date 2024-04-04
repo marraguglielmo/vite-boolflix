@@ -25,18 +25,14 @@ import Card from './partials/Card.vue';
 </script>
 
 <template>
-    <h1 class="text-center">{{ title }}</h1>
-    <div class="container row row-cols-4 border border-1 m-auto border-danger border-2">
+    <h1 class="text-center mb-4">{{ title }}</h1>
+    <div class="container row row-cols-4 m-auto border-2">
 
         <Card 
             v-for="card in store[type]"
             :key="card.id"
             :cardObj="card"
             />
-            <!-- :title="card.title"
-            :originalTitle="card.original_title"
-            :lang="card.original_language"
-            :vote="card.vote_average" -->
 
     </div>
 </template>
