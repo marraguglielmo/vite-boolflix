@@ -35,13 +35,33 @@ import {store} from '../../data/store';
 <template>
     <div class="col">
         <div class="gm_card text-center d-flex flex-column justify-content-center ">
+            <div class="card_gm_img">
+                <img
+                    v-if="cardObj.backdrop_path === null"
+                    src="../../../public/roll.png"
+                    :alt="cardObj.title || cardObj.name"
+                >
+                <img
+                    v-else
+                    :src="`${this.store.tmdbUrl}w342${cardObj.backdrop_path}`"
+                    :alt="cardObj.title || cardObj.name"
+                >
+            </div>
             <div class="card_gm_title fw-bold border border-2 fs-4">
                 {{ cardObj.title || cardObj.name}}
                 <div class="text-danger fs-6">{{ cardObj.original_title || cardObj.original_name }}</div>
             </div>
             <div class="card_gm_lang">
-                <img v-if="this.isIt === true" src="../../../it.png" alt="">
-                <img v-else-if="this.isEn === true" src="../../../en.png" alt="">
+                <img
+                    v-if="this.isIt === true"
+                    src="../../../it.png"
+                    alt=""
+                >
+                <img
+                    v-else-if="this.isEn === true"
+                    src="../../../en.png"
+                    alt=""
+                >
                 <div v-else> {{ this.lang }}</div>
             </div>
             <div class="card_gm_vote border border-1">
@@ -53,6 +73,10 @@ import {store} from '../../data/store';
 
 
 <style lang="scss" scoped>
+img{
+    max-width: 100%;
+}
+
 .col{
     .gm_card{
         min-height: 170px;

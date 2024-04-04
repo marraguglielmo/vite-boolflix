@@ -6,4 +6,6 @@ export const store = reactive({
     movie: [],
     tv: [],
     nameToSearch: '',
+    tmdbUrl: 'https://image.tmdb.org/t/p/',
+    netflixPng: 'https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'
 })
