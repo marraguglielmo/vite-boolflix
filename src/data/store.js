@@ -5,5 +5,5 @@ export const store = reactive({
     api_key: 'dc8f12bdaa6fd1e6b34f8ad134ef00c5',
     movie: [],
     tv: [],
-    nameToSearch: 'matrix'
+    nameToSearch: ''
 })

@@ -12,7 +12,13 @@
       ContainerCards,
       Footer
     },
-
+    
+    data(){
+      return{
+        store
+      }
+    },
+    
     methods:{
       getApi(type){
         axios.get(`${store.apiUrl}${type}?api_key=${store.api_key}`, {
@@ -27,12 +33,17 @@
           .catch(error =>{
             console.log('errore');
           })
+      },
+
+      startSearch(){
+        this.getApi('movie')
+        this.getApi('tv')
+
       }
     },
 
     mounted(){
-      this.getApi('movie')
-      this.getApi('tv')
+      this.startSearch()
     }
   }
 </script>
@@ -40,9 +51,9 @@
 <template>
 
   <Header />
-  <Searchbar @search="getApi" class="mb-4"/>
-  <ContainerCards type="movie"/>
-  <ContainerCards type="tv"/>
+  <Searchbar @search="startSearch" class="mb-4"/>
+  <ContainerCards type="movie" v-if="store.movie.length > 0"/>
+  <ContainerCards type="tv" v-if="store.tv.length > 0/>
   <Footer />
   
 </template>
