@@ -25,9 +25,13 @@ import {store} from '../../data/store';
                 }
             },
 
-            ratingStars(vote){
+            fullStars(vote){
                 return Math.floor(vote / 2);
             },
+
+            emptyStars(vote){
+                return Math.ceil(5 - (vote / 2));
+            }
 
         },
 
@@ -43,7 +47,7 @@ import {store} from '../../data/store';
             <div class="card_gm_img">
                 <img
                     v-if="cardObj.backdrop_path === null"
-                    src="../../../public/roll.png"
+                    src="../../../roll.png"
                     :alt="cardObj.title || cardObj.name"
                 >
                 <img
@@ -72,9 +76,14 @@ import {store} from '../../data/store';
             <div class="card_gm_vote border border-1">
                 <!-- vote: {{ cardObj.vote_average }} -->
                 <i
-                    v-for="(star, index) in ratingStars(cardObj.vote_average)"
+                    v-for="(fullStars, index) in fullStars(cardObj.vote_average)"
                     :key="index"
                     class="fa-solid fa-star"
+                ></i>
+                <i
+                    v-for="(emptyStars, index) in emptyStars(cardObj.vote_average)"
+                    :key="index"
+                    class="fa-regular fa-star"
                 ></i>
             </div>
         </div>
