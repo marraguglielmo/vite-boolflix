@@ -23,7 +23,12 @@ import {store} from '../../data/store';
                 }else{
                     this.lang = this.cardObj.original_language
                 }
-            }
+            },
+
+            ratingStars(vote){
+                return Math.floor(vote / 2);
+            },
+
         },
 
         mounted(){
@@ -43,7 +48,7 @@ import {store} from '../../data/store';
                 >
                 <img
                     v-else
-                    :src="`${this.store.tmdbUrl}w342${cardObj.backdrop_path}`"
+                    :src="`${this.store.tmdbUrl}w400${cardObj.poster_path}`"
                     :alt="cardObj.title || cardObj.name"
                 >
             </div>
@@ -65,7 +70,12 @@ import {store} from '../../data/store';
                 <div v-else> {{ this.lang }}</div>
             </div>
             <div class="card_gm_vote border border-1">
-                vote: {{ cardObj.vote_count }}
+                <!-- vote: {{ cardObj.vote_average }} -->
+                <i
+                    v-for="(star, index) in ratingStars(cardObj.vote_average)"
+                    :key="index"
+                    class="fa-solid fa-star"
+                ></i>
             </div>
         </div>
     </div>
@@ -79,7 +89,8 @@ img{
 
 .col{
     .gm_card{
-        min-height: 170px;
+        // background-color: whitesmoke;
+        min-height: fit-content;
         border: 2px solid black;
         border-radius: 10px;
         overflow: hidden;

@@ -49,15 +49,13 @@
 </script>
 
 <template>
-
-  <Header />
-  <Searchbar @search="startSearch" class="mb-4"/>
-  <ContainerCards type="movie" v-if="store.movie.length > 0"/>
-  <ContainerCards type="tv" v-if="store.tv.length > 0" />
-  <Footer />
-  
+    <Header />
+    <Searchbar @search="startSearch" class="mb-4"/>
+    <ContainerCards type="movie" v-if="store.movie.length > 0"/>
+    <ContainerCards type="tv" v-if="store.tv.length > 0" />
+    <Footer />
 </template>
 
 <style lang="scss">
-
+@use './assets/scss/main.scss';
 </style>

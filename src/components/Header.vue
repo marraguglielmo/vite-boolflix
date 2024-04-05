@@ -9,7 +9,9 @@ import Searchbar from './partials/Searchbar.vue';
 
 <template>
     <div class="container-md my-5">
-        <h1 class="text-center mb-3">Boolflix</h1>
+        <h1 class="text-center mb-3">
+            <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="Netflix">
+        </h1>
     </div>
 </template>
 
