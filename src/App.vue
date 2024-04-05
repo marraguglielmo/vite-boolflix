@@ -49,7 +49,6 @@
 </script>
 
 <template>
-    <Header />
     <Searchbar @search="startSearch" class="mb-4"/>
     <ContainerCards type="movie" v-if="store.movie.length > 0"/>
     <ContainerCards type="tv" v-if="store.tv.length > 0" />

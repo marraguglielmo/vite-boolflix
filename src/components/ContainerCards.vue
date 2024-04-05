@@ -25,18 +25,21 @@ import Card from './partials/Card.vue';
 </script>
 
 <template>
-    <h1 class="text-center mb-4">{{ title }}</h1>
-    <div class="container row row-cols-4 m-auto border-2">
-
-        <Card 
+    <h1 class="text-left mb-4 fw-bold">{{ title }}</h1>
+    <div class="container-fluid p-3">
+        <div class="row row-cols-4">
+            
+            <Card 
             v-for="card in store[type]"
             :key="card.id"
             :cardObj="card"
             />
-
+            
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+
 
 </style>
